@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class LineReader {
+public class LineReader implements AutoCloseable {
     private final BufferedReader reader;
     private String line;
 
@@ -21,5 +21,10 @@ public class LineReader {
 
     public String getLine() {
         return line;
+    }
+
+    @Override
+    public void close() throws Exception {
+        reader.close();
     }
 }
